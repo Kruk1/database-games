@@ -344,6 +344,7 @@ select
     background-color: #212121;
     color: white;
     border: 0;
+    cursor: pointer;
 }
 
 select:focus
@@ -380,7 +381,6 @@ select:focus
     content: "";
     position: absolute;
     width: 0;
-    left: 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -388,4 +388,38 @@ select:focus
     border-left: var(--size) solid transparent;
     border-right: var(--size) solid transparent;
     border-top: var(--size) solid white;
+}
+
+.arrow-up
+{
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #212121;
+    position: fixed;
+    top: 90%;
+    right: 6.5%;
+    transition: 0.2s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.arrow-up::after
+{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    --size2: 10px;
+    border-left: var(--size2) solid transparent;
+    border-right: var(--size2) solid transparent;
+    border-bottom: var(--size2) solid white;
+}
+
+.display
+{
+    opacity: 1;
+    visibility: visible;
 }

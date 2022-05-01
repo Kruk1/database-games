@@ -190,6 +190,7 @@ window.addEventListener('scroll', () =>
 {
     const scrollMaxValue = document.documentElement.scrollHeight - window.innerHeight
     const scrollValue = window.scrollY
+    const arrow = document.querySelector('.arrow-up')
 
     if(Math.ceil(scrollValue) === scrollMaxValue)
     {
@@ -200,6 +201,15 @@ window.addEventListener('scroll', () =>
                 makeTile()
             }
         }, 500)
+    }
+
+    if(scrollValue > 100)
+    {
+        arrow.classList.add('display')
+    }
+    else
+    {
+        arrow.classList.remove('display')
     }
 })
 
