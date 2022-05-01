@@ -8,13 +8,13 @@ const filter = document.querySelector('select')
 
 const makeTile = () =>
 {
+    skeletonTile()
     setTimeout(async () =>
     {
         try
         {
             resLink = `https://api.rawg.io/api/games?key=0f740dbb91404899b0d0fc48307b9f2c&page=${page + inputValue + selectValue}&exclude_additions=true`
             const apiData = await axios.get(resLink)
-            skeletonTile()
             const skeleton = document.querySelectorAll('.game-tile-skeleton')
             const gameContainer = document.querySelector('.games-container')
             for(let i = 0; i < apiData.data.results.length; i++)
@@ -125,6 +125,8 @@ const makeTile = () =>
         }
         catch(err)
         {
+            const skeleton = document.querySelectorAll('.game-tile-skeleton')
+            skeleton.forEach(block => block.remove())
             currLink = resLink
         }
     }, 1000)
