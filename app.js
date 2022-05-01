@@ -12,7 +12,7 @@ const makeTile = () =>
         {
             const skeleton = document.querySelectorAll('.game-tile-skeleton')
             const gameContainer = document.querySelector('.games-container')
-            const apiData = await axios.get(`https://api.rawg.io/api/games?key=0f740dbb91404899b0d0fc48307b9f2c&page=${page + inputValue + selectValue + tags}&exclude_additions=true`)
+            const apiData = await axios.get(`https://api.rawg.io/api/games?key=0f740dbb91404899b0d0fc48307b9f2c&page=${page + inputValue + selectValue}&exclude_additions=true`)
             for(let i = 0; i < apiData.data.results.length; i++)
             {
                 const newTile = document.createElement('section')
