@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming search api</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fontello/css/fontello-embedded.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-items">
+                <div class="nav-item"><a href="#">Games</a></div>
+                <div class="nav-item"><a href="#">Developers</a></div>
+                <div class="nav-item"><a href="#">Rating</a></div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <article class="input">
+            <h1>Find Games!</h1>
+            <h2>You can find informations about your favourite games!</h2>
+            <form action="" class="input-bar">
+                <input type="text" placeholder="e.g. Fifa 22" class="input-text">
+                <button class="search"><i class="icon-search"></i></button>
+            </form>
+            <div class="select-position">
+                <div class="custom-select">
+                    <select name="sorting">
+                        <option value="">Default</option>
+                        <option value="&ordering=-metacritic">Rating by metacritic</option>
+                    </select>
+                    <div class="custom-arrow"></div>
+                </div>
+            </div>
+        </article>
+        <article class="games-container"></article>
+    </main>
+</body>
+</html>
