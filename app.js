@@ -1,6 +1,8 @@
 let page = 1
 let inputValue = ''
 let selectValue = ''
+let resLink = ``
+let currLink =  ''
 const input = document.querySelector('.input-bar')
 const filter = document.querySelector('select')
 
@@ -10,9 +12,11 @@ const makeTile = () =>
     {
         try
         {
+            resLink = `https://api.rawg.io/api/games?key=0f740dbb91404899b0d0fc48307b9f2c&page=${page + inputValue + selectValue}&exclude_additions=true`
+            const apiData = await axios.get(resLink)
+            skeletonTile()
             const skeleton = document.querySelectorAll('.game-tile-skeleton')
             const gameContainer = document.querySelector('.games-container')
-            const apiData = await axios.get(`https://api.rawg.io/api/games?key=0f740dbb91404899b0d0fc48307b9f2c&page=${page + inputValue + selectValue}&exclude_additions=true`)
             for(let i = 0; i < apiData.data.results.length; i++)
             {
                 const newTile = document.createElement('section')
@@ -119,9 +123,9 @@ const makeTile = () =>
             skeleton.forEach(block => block.remove())
             page += 1
         }
-        catch
+        catch(err)
         {
-            //pass
+            currLink = resLink
         }
     }, 1000)
 }
@@ -189,8 +193,10 @@ window.addEventListener('scroll', () =>
     {
         setTimeout(() =>
         {
-            skeletonTile()
-            makeTile()
+            if(currLink !== resLink)
+            {
+                makeTile()
+            }
         }, 500)
     }
 })
