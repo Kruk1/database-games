@@ -490,4 +490,9 @@ select:focus
         top: 91%;
         right: 3%;
     }
+
+    .game-tile
+    {
+        width: 300px;
+    }
 }
