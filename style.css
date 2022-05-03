@@ -472,7 +472,17 @@ select:focus
 
     .nav-items
     {
-        width: 350px;
+        width: 300px;
+    }
+
+    .nav-item
+    {
+        width: 90px;
+    }
+
+    .nav-item::before
+    {
+        width: 90px;
     }
 
     .arrow-up
