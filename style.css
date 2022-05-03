@@ -110,7 +110,7 @@ header
 .nav-item:hover
 {
     background-color: #323232;
-    transform: scale(1.3);
+    transform: scale(1.2);
 }
 
 .nav-item a 
@@ -468,6 +468,7 @@ select:focus
     {
         text-align: center;
         width: 300px;
+        margin: 0;
     }
 
     .nav-items
@@ -493,6 +494,16 @@ select:focus
 
     .game-tile
     {
+        width: 280px;
+    }
+
+    .header
+    {
         width: 300px;
+    }
+    
+    .game-tile-skeleton
+    {
+        width: 290px;
     }
 }
