@@ -185,7 +185,6 @@ const skeletonTile = () =>
     }
 }
 
-
 window.addEventListener('scroll', () =>
 {
     const scrollMaxValue = document.documentElement.scrollHeight - window.innerHeight
