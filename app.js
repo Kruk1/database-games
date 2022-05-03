@@ -21,18 +21,26 @@ const makeTile = () =>
             {
                 const newTile = document.createElement('section')
                 const img = document.createElement('img')
+                img.setAttribute("alt", " ");
                 const makeDiv = document.createElement('div')
                 const makeDiv2 = document.createElement('div')
                 const makeDiv3 = document.createElement('div')
                 const makeDiv4 = document.createElement('div')
                 const makeDiv5 = document.createElement('div')
                 const storeImg = document.createElement('img')
+                storeImg.setAttribute("alt", "steam")
                 const storeImg2 = document.createElement('img')
+                storeImg2.setAttribute("alt", "xbox");
                 const storeImg3 = document.createElement('img')
+                storeImg3.setAttribute("alt", "playstation");
                 const storeImg4 = document.createElement('img')
+                storeImg4.setAttribute("alt", "epic games");
                 const platformImg = document.createElement('img')
+                platformImg.setAttribute("alt", "pc");
                 const platformImg2 = document.createElement('img')
+                platformImg2.setAttribute("alt", "playstation");
                 const platformImg3 = document.createElement('img')
+                platformImg3.setAttribute("alt", "xbox");
                 newTile.classList.add('game-tile')
                 img.classList.add('img-tile')
                 img.src = apiData.data.results[i].background_image
