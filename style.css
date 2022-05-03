@@ -504,11 +504,11 @@ select:focus
     
     .game-tile-skeleton
     {
-        width: 290px;
+        width: 280px;
     }
 
     main 
     {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 }
