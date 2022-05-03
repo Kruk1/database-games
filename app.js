@@ -185,7 +185,7 @@ const skeletonTile = () =>
     }
 }
 
-window.addEventListener('scroll', () =>
+const scrollLoading = () =>
 {
     const scrollMaxValue = document.documentElement.scrollHeight - window.innerHeight
     const scrollValue = window.scrollY
@@ -210,7 +210,10 @@ window.addEventListener('scroll', () =>
     {
         arrow.classList.remove('display')
     }
-})
+}
+
+window.addEventListener('scroll', () => scrollLoading())
+window.addEventListener('touchmove', () => scrollLoading())
 
 input.addEventListener('submit', e =>
 {
