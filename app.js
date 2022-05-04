@@ -1,10 +1,14 @@
 let page = 1
+let currImg = 0
 let inputValue = ''
 let selectValue = ''
 let resLink = ``
 let currLink =  ''
 const input = document.querySelector('.input-bar')
 const filter = document.querySelector('select')
+const imgGallery = document.querySelectorAll('.choose')
+const previousArrow = document.querySelector('.previous-arrow')
+const nextArrow = document.querySelector('.next-arrow')
 
 const makeTile = () =>
 {
@@ -241,6 +245,103 @@ filter.addEventListener('change', () =>
     page = 1
     makeTile()
 })
+
+imgGallery.forEach(img => 
+{
+    img.addEventListener('click', e =>
+    {
+        const imgIndex = Array.from(imgGallery)
+        const gallery = document.querySelector('.main-img')
+        gallery.src = img.src
+        currImg = imgIndex.indexOf(img)
+        e.stopPropagation()
+    })
+})
+
+previousArrow.addEventListener('click', e =>
+{
+    const img = document.querySelector('.main-img3')
+    const mainImg = document.querySelector('.main-img')
+    currImg -= 1
+    previousArrow.setAttribute('disabled', '')
+    if(currImg < 0)
+    {
+        currImg = imgGallery.length - 1
+        img.src = imgGallery[currImg].src
+        img.style.transition = '1s'
+        img.style.transform = 'translateX(100%)'
+        mainImg.style.transition = '1s'
+        mainImg.style.transform = 'translateX(100%)'
+        mainImg.addEventListener('transitionend', () =>
+        {
+            mainImg.src = img.src
+            img.style.transition = '0s'
+            mainImg.style.transition = '0s'
+            mainImg.style.transform = 'translateX(0)'
+            img.style.transform = 'translateX(0)'
+            previousArrow.removeAttribute('disabled', '')
+        })
+        e.stopPropagation()
+    }
+    img.src = imgGallery[currImg].src
+    img.style.transition = '1s'
+    img.style.transform = 'translateX(100%)'
+    mainImg.style.transition = '1s'
+    mainImg.style.transform = 'translateX(100%)'
+    mainImg.addEventListener('transitionend', () =>
+    {
+        mainImg.src = img.src
+        img.style.transition = '0s'
+        mainImg.style.transition = '0s'
+        mainImg.style.transform = 'translateX(0)'
+        img.style.transform = 'translateX(0)'
+        previousArrow.removeAttribute('disabled', '')
+    })
+    e.stopPropagation()
+})
+
+nextArrow.addEventListener('click', e =>
+{
+    const img = document.querySelector('.main-img2')
+    const mainImg = document.querySelector('.main-img')
+    currImg += 1
+    nextArrow.setAttribute('disabled', '')
+    if(currImg >= imgGallery.length)
+    {
+        currImg = 0
+        img.src = imgGallery[currImg].src
+        img.style.transition = '1s'
+        img.style.transform = 'translateX(-100%)'
+        mainImg.style.transition = '1s'
+        mainImg.style.transform = 'translateX(-100%)'
+        mainImg.addEventListener('transitionend', () =>
+        {
+            mainImg.src = img.src
+            img.style.transition = '0s'
+            mainImg.style.transition = '0s'
+            mainImg.style.transform = 'translateX(0)'
+            img.style.transform = 'translateX(0)'
+            nextArrow.removeAttribute('disabled', '')
+        })
+        e.stopPropagation()
+    }
+    img.src = imgGallery[currImg].src
+    img.style.transition = '1s'
+    img.style.transform = 'translateX(-100%)'
+    mainImg.style.transition = '1s'
+    mainImg.style.transform = 'translateX(-100%)'
+    mainImg.addEventListener('transitionend', () =>
+    {
+        mainImg.src = img.src
+        img.style.transition = '0s'
+        mainImg.style.transition = '0s'
+        mainImg.style.transform = 'translateX(0)'
+        img.style.transform = 'translateX(0)'
+        nextArrow.removeAttribute('disabled', '')
+    })
+    e.stopPropagation()
+})
+
 
 skeletonTile();
 makeTile();
