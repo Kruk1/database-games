@@ -443,9 +443,25 @@ select:focus
     transform: translateX(-50%) translateY(-50%);
     z-index: 15;
     overflow-x: hidden;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.modal-container::-webkit-scrollbar-corner
+{
+    display: none;
+}
+
+.modal-container::-webkit-scrollbar-thumb
+{
+    background-color: #808080;
+}
+
+.modal-container::-webkit-scrollbar-track 
+{
+    background-color: transparent;
 }
 
 .modal-container h3
@@ -459,7 +475,7 @@ select:focus
 .gallery-container
 {
     width: 1000px;
-    padding: 10px;
+    padding: 10px 10px 50px 10px;
     position: relative;
 }
 
@@ -475,30 +491,6 @@ select:focus
 .main-gallery img
 {
     width: 100%;
-}
-
-@keyframes galleryOutRight
-{
-    0%{transform: translateX(0);}
-    100%{transform: translateX(-100%);}
-}
-
-@keyframes galleryInRight
-{
-    0%{transform: translateX(100%);}
-    100%{transform: translateX(0);}
-}
-
-@keyframes galleryOutLeft
-{
-    0%{transform: translateX(0);}
-    100%{transform: translateX(100%);}
-}
-
-@keyframes galleryInLeft
-{
-    0%{transform: translateX(-100%);}
-    100%{transform: translateX(0);}
 }
 
 .choosable-img
@@ -600,10 +592,45 @@ select:focus
     opacity: 1;
 }
 
+.requirements
+{
+    width: 1000px;
+    display: flex;
+    margin-top: 20px;
+}
+
+.minimal
+{
+    width: 460px;
+    padding: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.recommend
+{
+    width: 460px;
+    padding: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.bold
+{
+    font-weight: 400;
+    font-size: 22px;
+}
+
 .display
 {
     opacity: 1;
     visibility: visible;
+}
+
+.opacity
+{
+    opacity: 1;
+    border: 1px solid white;
 }
 
 :root
@@ -611,6 +638,27 @@ select:focus
     --size: 5px;
     --size2: 10px;
     --size3: 10px;
+}
+
+::-webkit-scrollbar 
+{
+    width: 8px;
+    padding: 0;
+}  
+
+::-webkit-scrollbar-thumb
+{
+    background-color: #c0c0c0;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    background-color: #808080;
+}
+
+::-webkit-scrollbar-track 
+{
+    background-color: black;
 }
 
 @media screen and (max-width: 1336px)

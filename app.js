@@ -252,7 +252,9 @@ imgGallery.forEach(img =>
     {
         const imgIndex = Array.from(imgGallery)
         const gallery = document.querySelector('.main-img')
+        imgGallery[currImg].classList.remove('opacity')
         gallery.src = img.src
+        img.classList.add('opacity')
         currImg = imgIndex.indexOf(img)
         e.stopPropagation()
     })
@@ -262,11 +264,14 @@ previousArrow.addEventListener('click', e =>
 {
     const img = document.querySelector('.main-img3')
     const mainImg = document.querySelector('.main-img')
+    imgGallery.forEach(img => img.classList.remove('opacity'))
     currImg -= 1
     previousArrow.setAttribute('disabled', '')
     if(currImg < 0)
     {
+        imgGallery.forEach(img => img.classList.remove('opacity'))
         currImg = imgGallery.length - 1
+        imgGallery[currImg].classList.add('opacity')
         img.src = imgGallery[currImg].src
         img.style.transition = '1s'
         img.style.transform = 'translateX(100%)'
@@ -283,6 +288,7 @@ previousArrow.addEventListener('click', e =>
         })
         e.stopPropagation()
     }
+    imgGallery[currImg].classList.add('opacity')
     img.src = imgGallery[currImg].src
     img.style.transition = '1s'
     img.style.transform = 'translateX(100%)'
@@ -304,11 +310,14 @@ nextArrow.addEventListener('click', e =>
 {
     const img = document.querySelector('.main-img2')
     const mainImg = document.querySelector('.main-img')
+    imgGallery.forEach(img => img.classList.remove('opacity'))
     currImg += 1
     nextArrow.setAttribute('disabled', '')
     if(currImg >= imgGallery.length)
     {
+        imgGallery.forEach(img => img.classList.remove('opacity'))
         currImg = 0
+        imgGallery[currImg].classList.add('opacity')
         img.src = imgGallery[currImg].src
         img.style.transition = '1s'
         img.style.transform = 'translateX(-100%)'
@@ -325,6 +334,7 @@ nextArrow.addEventListener('click', e =>
         })
         e.stopPropagation()
     }
+    imgGallery[currImg].classList.add('opacity')
     img.src = imgGallery[currImg].src
     img.style.transition = '1s'
     img.style.transform = 'translateX(-100%)'
