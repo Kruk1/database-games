@@ -216,6 +216,7 @@ const makeTile = () =>
                     {
                         btn.nextElementSibling.classList.add('visible')
                         btn.nextElementSibling.nextElementSibling.classList.add('visible')
+                        document.body.style.overflow = 'hidden'
                         e.stopPropagation();
                     })
                 
@@ -223,6 +224,7 @@ const makeTile = () =>
                     {
                         btn.nextElementSibling.classList.remove('visible')
                         btn.nextElementSibling.nextElementSibling.classList.remove('visible')
+                        document.body.style.overflow = 'auto'
                         e.stopPropagation();
                     })
 

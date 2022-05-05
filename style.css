@@ -492,7 +492,8 @@ select:focus
 
 .main-gallery img
 {
-    width: 100%;
+    width: 980px;
+    height: 551.25px;
     aspect-ratio: 16 / 9;
 }
 
