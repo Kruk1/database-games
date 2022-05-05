@@ -430,6 +430,7 @@ select:focus
     height: 100vh;
     z-index: 10;
     overflow: hidden;
+    visibility: hidden;
 }
 
 .modal-container
@@ -447,6 +448,7 @@ select:focus
     display: flex;
     flex-direction: column;
     align-items: center;
+    visibility: hidden;
 }
 
 .modal-container::-webkit-scrollbar-corner
@@ -491,6 +493,7 @@ select:focus
 .main-gallery img
 {
     width: 100%;
+    aspect-ratio: 16 / 9;
 }
 
 .choosable-img
@@ -592,6 +595,51 @@ select:focus
     opacity: 1;
 }
 
+.informations
+{
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.tags
+{
+    width: 250px;
+    text-align: center;
+    line-height: 25px;
+    letter-spacing: 1px;
+}
+
+.tags h3, .genre h3, .platforms h3, .minimal-age h3
+{
+    margin-bottom: 30px;
+}
+
+.genre 
+{
+    width: 250px;
+    text-align: center;
+    line-height: 25px;
+    letter-spacing: 1px;
+}
+
+.platforms 
+{
+    width: 250px;
+    text-align: center;
+    line-height: 25px;
+    letter-spacing: 1px;
+}
+
+.minimal-age
+{
+    width: 250px;
+    text-align: center;
+    line-height: 25px;
+    letter-spacing: 1px;
+}
+
 .requirements
 {
     width: 1000px;
@@ -624,6 +672,11 @@ select:focus
 .display
 {
     opacity: 1;
+    visibility: visible;
+}
+
+.visible
+{
     visibility: visible;
 }
 

@@ -1,14 +1,91 @@
 let page = 1
-let currImg = 0
 let inputValue = ''
 let selectValue = ''
 let resLink = ``
 let currLink =  ''
 const input = document.querySelector('.input-bar')
 const filter = document.querySelector('select')
-const imgGallery = document.querySelectorAll('.choose')
-const previousArrow = document.querySelector('.previous-arrow')
-const nextArrow = document.querySelector('.next-arrow')
+const modalItem = document.querySelector('.modal')
+
+
+const modal = (api, j) =>
+{
+    const modalClone = modalItem.content.cloneNode(true)
+    const gameContainer = document.querySelector('.games-container')
+    const title = modalClone.querySelector('.title')
+    const choosableImg = modalClone.querySelector('.choosable-img')
+    const mainImg = modalClone.querySelector('.main-gallery')
+    const tags = modalClone.querySelector('.t-content')
+    tags.textContent = ''
+    const genre = modalClone.querySelector('.g-content')
+    genre.textContent = ''
+    const platforms = modalClone.querySelector('.p-content')
+    platforms.textContent = ''
+    const age = modalClone.querySelector('.m-content')
+    age.textContent = ''
+    const minimal = modalClone.querySelector('.minimal')
+    const recommend = modalClone.querySelector('.recommend')
+
+    if(api.data.results[j].short_screenshots)
+    {
+        for(let i = 0; i < api.data.results[j].short_screenshots.length; i++)
+        {
+            const img = document.createElement('img')
+            img.src = api.data.results[j].short_screenshots[i].image
+            img.classList.add('choose')
+            choosableImg.append(img)
+        }
+        mainImg.children[1].src = choosableImg.children[0].src
+        choosableImg.children[0].classList.add('opacity')
+    }
+
+    if(api.data.results[j].tags)
+    {
+        for(let i = 0; i < api.data.results[j].tags.length - 1; i++)
+        {
+            if(api.data.results[j].tags[i].language === 'eng')
+            {
+                tags.textContent += `${api.data.results[j].tags[i].name}, `
+            }
+        }
+        const lastItem = api.data.results[j].tags.length - 1
+        if(api.data.results[j].tags[lastItem].language === 'eng')
+        {
+            tags.textContent += `${api.data.results[j].tags[lastItem].name}`
+        }
+        else
+        {
+            tags.textContent += `${api.data.results[j].tags[lastItem - 1].name}`
+        }
+    }
+
+    if(api.data.results[j].genres)
+    {
+        for(let i = 0; i < api.data.results[j].genres.length - 1; i++)
+        {
+            genre.textContent += `${api.data.results[j].genres[i].name}, `
+        }
+        const lastItem = api.data.results[j].genres.length - 1
+        genre.textContent += `${api.data.results[j].genres[lastItem].name}`
+    }
+    
+    if(api.data.results[j].platforms)
+    {
+        for(let i = 0; i < api.data.results[j].platforms.length - 1; i++)
+        {
+            platforms.textContent += `${api.data.results[j].platforms[i].platform.name}, `
+        }
+        const lastItem = api.data.results[j].platforms.length - 1
+        platforms.textContent += `${api.data.results[j].platforms[lastItem].platform.name}`
+    }
+    
+    if(api.data.results[j].esrb_rating)
+    {
+        age.textContent += `${api.data.results[j].esrb_rating.name}`
+        title.textContent = api.data.results[j].name
+    }
+    gameContainer.append(modalClone)
+}
 
 const makeTile = () =>
 {
@@ -131,6 +208,135 @@ const makeTile = () =>
                 makeDiv2.append(makeDiv3)
                 newTile.append(makeDiv2)
                 gameContainer.append(newTile)
+                modal(apiData, i)
+                const modalOpenBtn = document.querySelectorAll('.game-tile')
+                modalOpenBtn.forEach(btn => 
+                {
+                    btn.addEventListener('click', e =>
+                    {
+                        btn.nextElementSibling.classList.add('visible')
+                        btn.nextElementSibling.nextElementSibling.classList.add('visible')
+                        e.stopPropagation();
+                    })
+                
+                    btn.nextElementSibling.addEventListener('click', e =>
+                    {
+                        btn.nextElementSibling.classList.remove('visible')
+                        btn.nextElementSibling.nextElementSibling.classList.remove('visible')
+                        e.stopPropagation();
+                    })
+
+                    const imgGallery = btn.nextElementSibling.nextElementSibling.querySelectorAll('.choose')
+                    const previousArrow = btn.nextElementSibling.nextElementSibling.querySelector('.previous-arrow')
+                    const nextArrow = btn.nextElementSibling.nextElementSibling.querySelector('.next-arrow')
+                    let currImg = 0
+                
+                    imgGallery.forEach(img => 
+                    {
+                        img.addEventListener('click', e =>
+                        {
+                            const imgIndex = Array.from(imgGallery)
+                            const gallery = btn.nextElementSibling.nextElementSibling.querySelector('.main-img')
+                            imgGallery[currImg].classList.remove('opacity')
+                            gallery.src = img.src
+                            img.classList.add('opacity')
+                            currImg = imgIndex.indexOf(img)
+                            e.stopPropagation()
+                        })
+                    })
+                
+                    previousArrow.addEventListener('click', e =>
+                    {
+                        const img = btn.nextElementSibling.nextElementSibling.querySelector('.main-img3')
+                        const mainImg = btn.nextElementSibling.nextElementSibling.querySelector('.main-img')
+                        imgGallery.forEach(img => img.classList.remove('opacity'))
+                        currImg -= 1
+                        previousArrow.setAttribute('disabled', '')
+                        if(currImg < 0)
+                        {
+                            imgGallery.forEach(img => img.classList.remove('opacity'))
+                            currImg = imgGallery.length - 1
+                            imgGallery[currImg].classList.add('opacity')
+                            img.src = imgGallery[currImg].src
+                            img.style.transition = '1s'
+                            img.style.transform = 'translateX(100%)'
+                            mainImg.style.transition = '1s'
+                            mainImg.style.transform = 'translateX(100%)'
+                            mainImg.addEventListener('transitionend', () =>
+                            {
+                                mainImg.src = img.src
+                                img.style.transition = '0s'
+                                mainImg.style.transition = '0s'
+                                mainImg.style.transform = 'translateX(0)'
+                                img.style.transform = 'translateX(0)'
+                                previousArrow.removeAttribute('disabled', '')
+                            })
+                            e.stopPropagation()
+                        }
+                        imgGallery[currImg].classList.add('opacity')
+                        img.src = imgGallery[currImg].src
+                        img.style.transition = '1s'
+                        img.style.transform = 'translateX(100%)'
+                        mainImg.style.transition = '1s'
+                        mainImg.style.transform = 'translateX(100%)'
+                        mainImg.addEventListener('transitionend', () =>
+                        {
+                            mainImg.src = img.src
+                            img.style.transition = '0s'
+                            mainImg.style.transition = '0s'
+                            mainImg.style.transform = 'translateX(0)'
+                            img.style.transform = 'translateX(0)'
+                            previousArrow.removeAttribute('disabled', '')
+                        })
+                        e.stopPropagation()
+                    })
+                
+                    nextArrow.addEventListener('click', e =>
+                    {
+                        const img = btn.nextElementSibling.nextElementSibling.querySelector('.main-img2')
+                        const mainImg = btn.nextElementSibling.nextElementSibling.querySelector('.main-img')
+                        imgGallery.forEach(img => img.classList.remove('opacity'))
+                        currImg += 1
+                        nextArrow.setAttribute('disabled', '')
+                        if(currImg >= imgGallery.length)
+                        {
+                            imgGallery.forEach(img => img.classList.remove('opacity'))
+                            currImg = 0
+                            imgGallery[currImg].classList.add('opacity')
+                            img.src = imgGallery[currImg].src
+                            img.style.transition = '1s'
+                            img.style.transform = 'translateX(-100%)'
+                            mainImg.style.transition = '1s'
+                            mainImg.style.transform = 'translateX(-100%)'
+                            mainImg.addEventListener('transitionend', () =>
+                            {
+                                mainImg.src = img.src
+                                img.style.transition = '0s'
+                                mainImg.style.transition = '0s'
+                                mainImg.style.transform = 'translateX(0)'
+                                img.style.transform = 'translateX(0)'
+                                nextArrow.removeAttribute('disabled', '')
+                            })
+                            e.stopPropagation()
+                        }
+                        imgGallery[currImg].classList.add('opacity')
+                        img.src = imgGallery[currImg].src
+                        img.style.transition = '1s'
+                        img.style.transform = 'translateX(-100%)'
+                        mainImg.style.transition = '1s'
+                        mainImg.style.transform = 'translateX(-100%)'
+                        mainImg.addEventListener('transitionend', () =>
+                        {
+                            mainImg.src = img.src
+                            img.style.transition = '0s'
+                            mainImg.style.transition = '0s'
+                            mainImg.style.transform = 'translateX(0)'
+                            img.style.transform = 'translateX(0)'
+                            nextArrow.removeAttribute('disabled', '')
+                        })
+                        e.stopPropagation()
+                    })
+                })
             }
             skeleton.forEach(block => block.remove())
             page += 1
@@ -240,118 +446,15 @@ input.addEventListener('submit', e =>
 filter.addEventListener('change', () =>
 {
     const existingTile = document.querySelectorAll('.game-tile')
+    const existingModalOverlays = document.querySelectorAll('.modal-overlay')
+    const existingModals = document.querySelectorAll('.modal-container')
     existingTile.forEach(tile => tile.remove())
+    existingModalOverlays.forEach(tile => tile.remove())
+    existingModals.forEach(tile => tile.remove())
     selectValue = filter.options[filter.selectedIndex].value
     page = 1
     makeTile()
 })
-
-imgGallery.forEach(img => 
-{
-    img.addEventListener('click', e =>
-    {
-        const imgIndex = Array.from(imgGallery)
-        const gallery = document.querySelector('.main-img')
-        imgGallery[currImg].classList.remove('opacity')
-        gallery.src = img.src
-        img.classList.add('opacity')
-        currImg = imgIndex.indexOf(img)
-        e.stopPropagation()
-    })
-})
-
-previousArrow.addEventListener('click', e =>
-{
-    const img = document.querySelector('.main-img3')
-    const mainImg = document.querySelector('.main-img')
-    imgGallery.forEach(img => img.classList.remove('opacity'))
-    currImg -= 1
-    previousArrow.setAttribute('disabled', '')
-    if(currImg < 0)
-    {
-        imgGallery.forEach(img => img.classList.remove('opacity'))
-        currImg = imgGallery.length - 1
-        imgGallery[currImg].classList.add('opacity')
-        img.src = imgGallery[currImg].src
-        img.style.transition = '1s'
-        img.style.transform = 'translateX(100%)'
-        mainImg.style.transition = '1s'
-        mainImg.style.transform = 'translateX(100%)'
-        mainImg.addEventListener('transitionend', () =>
-        {
-            mainImg.src = img.src
-            img.style.transition = '0s'
-            mainImg.style.transition = '0s'
-            mainImg.style.transform = 'translateX(0)'
-            img.style.transform = 'translateX(0)'
-            previousArrow.removeAttribute('disabled', '')
-        })
-        e.stopPropagation()
-    }
-    imgGallery[currImg].classList.add('opacity')
-    img.src = imgGallery[currImg].src
-    img.style.transition = '1s'
-    img.style.transform = 'translateX(100%)'
-    mainImg.style.transition = '1s'
-    mainImg.style.transform = 'translateX(100%)'
-    mainImg.addEventListener('transitionend', () =>
-    {
-        mainImg.src = img.src
-        img.style.transition = '0s'
-        mainImg.style.transition = '0s'
-        mainImg.style.transform = 'translateX(0)'
-        img.style.transform = 'translateX(0)'
-        previousArrow.removeAttribute('disabled', '')
-    })
-    e.stopPropagation()
-})
-
-nextArrow.addEventListener('click', e =>
-{
-    const img = document.querySelector('.main-img2')
-    const mainImg = document.querySelector('.main-img')
-    imgGallery.forEach(img => img.classList.remove('opacity'))
-    currImg += 1
-    nextArrow.setAttribute('disabled', '')
-    if(currImg >= imgGallery.length)
-    {
-        imgGallery.forEach(img => img.classList.remove('opacity'))
-        currImg = 0
-        imgGallery[currImg].classList.add('opacity')
-        img.src = imgGallery[currImg].src
-        img.style.transition = '1s'
-        img.style.transform = 'translateX(-100%)'
-        mainImg.style.transition = '1s'
-        mainImg.style.transform = 'translateX(-100%)'
-        mainImg.addEventListener('transitionend', () =>
-        {
-            mainImg.src = img.src
-            img.style.transition = '0s'
-            mainImg.style.transition = '0s'
-            mainImg.style.transform = 'translateX(0)'
-            img.style.transform = 'translateX(0)'
-            nextArrow.removeAttribute('disabled', '')
-        })
-        e.stopPropagation()
-    }
-    imgGallery[currImg].classList.add('opacity')
-    img.src = imgGallery[currImg].src
-    img.style.transition = '1s'
-    img.style.transform = 'translateX(-100%)'
-    mainImg.style.transition = '1s'
-    mainImg.style.transform = 'translateX(-100%)'
-    mainImg.addEventListener('transitionend', () =>
-    {
-        mainImg.src = img.src
-        img.style.transition = '0s'
-        mainImg.style.transition = '0s'
-        mainImg.style.transform = 'translateX(0)'
-        img.style.transform = 'translateX(0)'
-        nextArrow.removeAttribute('disabled', '')
-    })
-    e.stopPropagation()
-})
-
 
 skeletonTile();
 makeTile();
