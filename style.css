@@ -1101,18 +1101,53 @@ select:focus
 
     .main-gallery
     {
-        width: 290px;
+        width: 285px;
     }
 
     .main-gallery img 
     {
-        width: 290px;
+        width: 285px;
         height: fit-content;
     }
 
     .gallery-container
     {
-        width: 290px;
+        width: 285px;
         padding: 40px 0 50px 0;
+    }
+
+    .choosable-img
+    {
+        overflow-x: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .choosable-img::-webkit-scrollbar
+    {
+        display: none;
+    }      
+
+    .modal-container h3
+    {
+        width: 220px;
+        font-size: 25px;
+    }
+
+    .tags h3, .genre h3, .platforms h3, .minimal-age h3
+    {
+        width: auto;
+        font-size: 30px;
+    }
+
+    .requirements
+    {
+        width: 292px;
+    }
+
+    .req h3
+    {
+        width: auto;
+        font-size: 30px;
     }
 }
