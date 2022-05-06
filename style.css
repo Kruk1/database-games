@@ -436,7 +436,7 @@ select:focus
 .modal-container
 {
     width: 1200px;
-    height: 800px;
+    max-height: 800px;
     background-color: #212121;
     position: fixed;
     top: 50%;
@@ -550,7 +550,7 @@ select:focus
     background-color: #101010;
     opacity: 0.7;
     position: absolute;
-    top: 275.5px;
+    top: 285.675px;
     left: 30px;
     transform: translateY(-50%);
     display: flex;
@@ -587,7 +587,7 @@ select:focus
     background-color: #101010;
     opacity: 0.7;
     position: absolute;
-    top: 275.5px;
+    top: 285.675px;
     right: 30px;
     transform: translateY(-50%);
     display: flex;
@@ -743,11 +743,206 @@ select:focus
     }
 }
 
+@media screen and (max-width: 1220px) 
+{
+    .modal-container
+    {
+        width: 1000px;
+    }
+
+    .informations
+    {
+        flex-wrap: wrap;
+        width: 992px;
+        margin-bottom: 50px;
+    }
+
+    .choosable-img
+    {
+        overflow: hidden;
+        justify-content: flex-start;
+    }
+
+    .main-gallery
+    {
+        width: 800px;
+    }
+
+    .main-gallery img 
+    {
+        width: 800px;
+        height: fit-content;
+    }
+
+    .gallery-container
+    {
+        width: 800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .minimal
+    {
+        width: 400px;
+    }
+    
+    .recommend
+    {
+        width: 400px;
+    }
+
+    .requirements
+    {
+        justify-content: center;
+    }
+
+    .next-arrow
+    {
+        top: 235px;
+    }
+
+    .previous-arrow
+    {
+        top: 235px;
+    }
+
+    .choose:last-child
+    {
+        margin-right: 0;
+    }
+    
+    .choose:first-child
+    {
+        margin-left: 0;
+    }
+}
+
 @media screen and (max-width: 1006px)
 {
     .select-position
     {
         width: 640px;
+    }
+
+    .modal-container
+    {
+        width: 800px;
+    }
+
+    .informations
+    {
+        flex-wrap: wrap;
+        width: 792px;
+        margin-bottom: 50px;
+    }
+    
+    .minimal
+    {
+        width: 300px;
+    }
+    
+    .recommend
+    {
+        width: 300px;
+    }
+
+    .main-gallery
+    {
+        width: 600px;
+    }
+
+    .main-gallery img 
+    {
+        width: 600px;
+        height: fit-content;
+    }
+
+    .gallery-container
+    {
+        width: 600px;
+    }
+
+    .requirements
+    {
+        width: 792px;
+    }
+    
+    .next-arrow
+    {
+        top: 178.75px;
+    }
+
+    .previous-arrow
+    {
+        top: 178.75px;
+    }
+}
+
+@media screen and (max-width: 800px) 
+{
+    .modal-container
+    {
+        width: 600px;
+    }
+
+    .modal-container h3:first-child
+    {
+        margin-top: 50px;
+    }
+
+    .informations
+    {
+        flex-wrap: wrap;
+        width: 592px;
+        margin-bottom: 50px;
+    }
+
+    .minimal
+    {
+        width: 200px;
+    }
+    
+    .recommend
+    {
+        width: 200px;
+    }
+
+    .main-gallery
+    {
+        width: 500px;
+    }
+
+    .main-gallery img 
+    {
+        width: 500px;
+        height: fit-content;
+    }
+
+    .gallery-container
+    {
+        width: 500px;
+        padding: 40px 10px 50px 10px;
+    }
+
+    .requirements
+    {
+        width: 592px;
+    }
+    
+    .next-arrow
+    {
+        top: 180.625px;
+    }
+
+    .previous-arrow
+    {
+        top: 180.65px;
+    }
+
+    .choose
+    {
+        width: 125px;
     }
 }
 
@@ -757,6 +952,68 @@ select:focus
     {
         width: 300px;
         justify-content: center;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    .modal-container
+    {
+        width: 400px;
+    }
+
+    .requirements
+    {
+        width: 392px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .minimal
+    {
+        width: 300px;
+    }
+    
+    .recommend
+    {
+        width: 300px;
+    }
+
+    .informations
+    {
+        width: 392px;
+    }
+    
+    .main-gallery
+    {
+        width: 380px;
+    }
+
+    .main-gallery img 
+    {
+        width: 380px;
+        height: fit-content;
+    }
+
+    .gallery-container
+    {
+        width: 380px;
+        padding: 40px 10px 50px 10px;
+    }
+
+    .next-arrow
+    {
+        display: none;
+    }
+
+    .previous-arrow
+    {
+        display: none;
+    }
+
+    .choose
+    {
+        width: 100px;
     }
 }
 
@@ -818,5 +1075,40 @@ select:focus
     main 
     {
         margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 400px) 
+{
+    .modal-container
+    {
+        width: 300px;
+    }
+
+    .minimal
+    {
+        width: 250px;
+    }
+    
+    .recommend
+    {
+        width: 250px;
+    }
+
+    .main-gallery
+    {
+        width: 290px;
+    }
+
+    .main-gallery img 
+    {
+        width: 290px;
+        height: fit-content;
+    }
+
+    .gallery-container
+    {
+        width: 290px;
+        padding: 40px 0 50px 0;
     }
 }

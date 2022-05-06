@@ -476,7 +476,7 @@ input.addEventListener('submit', e =>
     e.preventDefault()
 })
 
-filter.addEventListener('change', () =>
+filter.addEventListener('change', e =>
 {
     const existingTile = document.querySelectorAll('.game-tile')
     const existingModalOverlays = document.querySelectorAll('.modal-overlay')
@@ -487,6 +487,7 @@ filter.addEventListener('change', () =>
     selectValue = filter.options[filter.selectedIndex].value
     page = 1
     makeTile()
+    e.stopPropagation()
 })
 
 skeletonTile();
