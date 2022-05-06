@@ -828,6 +828,7 @@ select:focus
     .modal-container
     {
         width: 800px;
+        max-height: 500px;
     }
 
     .informations
@@ -884,6 +885,7 @@ select:focus
     .modal-container
     {
         width: 600px;
+        max-height: 500px;
     }
 
     .modal-container h3:first-child
@@ -960,6 +962,7 @@ select:focus
     .modal-container
     {
         width: 400px;
+        max-height: 500px;
     }
 
     .requirements
