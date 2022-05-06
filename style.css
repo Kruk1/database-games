@@ -474,6 +474,27 @@ select:focus
     font-weight: 400;
 }
 
+.cancel
+{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: 0.1s;
+}
+
+.cancel:hover
+{
+    background-color: #323232;
+    cursor: pointer;
+}
+
 .gallery-container
 {
     width: 1000px;
@@ -494,7 +515,6 @@ select:focus
 {
     width: 980px;
     height: 551.25px;
-    aspect-ratio: 16 / 9;
 }
 
 .choosable-img

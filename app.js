@@ -212,10 +212,20 @@ const makeTile = () =>
                 const modalOpenBtn = document.querySelectorAll('.game-tile')
                 modalOpenBtn.forEach(btn => 
                 {
+                    const cancel = btn.nextElementSibling.nextElementSibling.querySelector('.cancel')
+                    const imgGallery = btn.nextElementSibling.nextElementSibling.querySelectorAll('.choose')
+                    const previousArrow = btn.nextElementSibling.nextElementSibling.querySelector('.previous-arrow')
+                    const nextArrow = btn.nextElementSibling.nextElementSibling.querySelector('.next-arrow')
+                    const img = btn.nextElementSibling.nextElementSibling.querySelector('.main-img3')
+                    const img2 = btn.nextElementSibling.nextElementSibling.querySelector('.main-img2')
+                    const mainImg = btn.nextElementSibling.nextElementSibling.querySelector('.main-img')
+
                     btn.addEventListener('click', e =>
                     {
                         btn.nextElementSibling.classList.add('visible')
+                        btn.nextElementSibling.style.display = 'block'
                         btn.nextElementSibling.nextElementSibling.classList.add('visible')
+                        btn.nextElementSibling.nextElementSibling.style.display = 'flex'
                         document.body.style.overflow = 'hidden'
                         e.stopPropagation();
                     })
@@ -223,14 +233,35 @@ const makeTile = () =>
                     btn.nextElementSibling.addEventListener('click', e =>
                     {
                         btn.nextElementSibling.classList.remove('visible')
+                        btn.nextElementSibling.style.display = 'none'
                         btn.nextElementSibling.nextElementSibling.classList.remove('visible')
+                        btn.nextElementSibling.nextElementSibling.style.display = 'none'
                         document.body.style.overflow = 'auto'
+                        mainImg.style.transform = 'translateX(0)'
+                        img.style.transform = 'translateX(0)'
+                        img2.style.transform = 'translateX(0)'
+                        mainImg.src = imgGallery[currImg].src
+                        previousArrow.removeAttribute('disabled', '')
+                        nextArrow.removeAttribute('disabled', '')
                         e.stopPropagation();
                     })
 
-                    const imgGallery = btn.nextElementSibling.nextElementSibling.querySelectorAll('.choose')
-                    const previousArrow = btn.nextElementSibling.nextElementSibling.querySelector('.previous-arrow')
-                    const nextArrow = btn.nextElementSibling.nextElementSibling.querySelector('.next-arrow')
+                    cancel.addEventListener('click', e =>
+                    {
+                        btn.nextElementSibling.classList.remove('visible')
+                        btn.nextElementSibling.style.display = 'none'
+                        btn.nextElementSibling.nextElementSibling.classList.remove('visible')
+                        btn.nextElementSibling.nextElementSibling.style.display = 'none'
+                        document.body.style.overflow = 'auto'
+                        mainImg.style.transform = 'translateX(0)'
+                        img.style.transform = 'translateX(0)'
+                        img2.style.transform = 'translateX(0)'
+                        mainImg.src = imgGallery[currImg].src
+                        previousArrow.removeAttribute('disabled', '')
+                        nextArrow.removeAttribute('disabled', '')
+                        e.stopPropagation();
+                    })
+
                     let currImg = 0
                 
                     imgGallery.forEach(img => 
