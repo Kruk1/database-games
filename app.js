@@ -35,7 +35,7 @@ const modal = (api, j) =>
             img.classList.add('choose')
             choosableImg.append(img)
         }
-        mainImg.children[1].src = choosableImg.children[0].src
+        mainImg.children[1].children[0].src = choosableImg.children[0].src
         choosableImg.children[0].classList.add('opacity')
     }
 

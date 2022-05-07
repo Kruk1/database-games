@@ -517,6 +517,14 @@ select:focus
     height: 551.25px;
 }
 
+.img, .img2, .img3
+{
+    display: flex;
+    justify-content: center;
+    width: 980px;
+    height: 551.25px;
+}
+
 .choosable-img
 {
     width: 100%;
@@ -771,7 +779,7 @@ select:focus
     .main-gallery img 
     {
         width: 800px;
-        height: fit-content;
+        height: auto;
     }
 
     .gallery-container
@@ -816,6 +824,24 @@ select:focus
     {
         margin-left: 0;
     }
+
+    .img, .img2, .img3
+    {
+        width: 800px;
+        height: 450px;
+    }
+
+    .choosable-img::-webkit-scrollbar
+    {
+        display: none;
+    }      
+
+    .choosable-img
+    {
+        overflow-x: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }
 
 @media screen and (max-width: 1006px)
@@ -856,7 +882,7 @@ select:focus
     .main-gallery img 
     {
         width: 600px;
-        height: fit-content;
+        height: auto;
     }
 
     .gallery-container
@@ -877,6 +903,12 @@ select:focus
     .previous-arrow
     {
         top: 178.75px;
+    }
+
+    .img, .img2, .img3
+    {
+        width: 600px;
+        height: 337.5px;
     }
 }
 
@@ -918,7 +950,7 @@ select:focus
     .main-gallery img 
     {
         width: 500px;
-        height: fit-content;
+        height: auto;
     }
 
     .gallery-container
@@ -945,6 +977,12 @@ select:focus
     .choose
     {
         width: 125px;
+    }
+    
+    .img, .img2, .img3
+    {
+        width: 500px;
+        height: 281.25px;
     }
 }
 
@@ -995,7 +1033,7 @@ select:focus
     .main-gallery img 
     {
         width: 380px;
-        height: fit-content;
+        height: auto;
     }
 
     .gallery-container
@@ -1017,6 +1055,12 @@ select:focus
     .choose
     {
         width: 100px;
+    }
+
+    .img, .img2, .img3
+    {
+        width: 380px;
+        height: 213.75px;
     }
 }
 
@@ -1107,7 +1151,7 @@ select:focus
     .main-gallery img 
     {
         width: 285px;
-        height: fit-content;
+        height: auto;
     }
 
     .gallery-container
@@ -1115,18 +1159,6 @@ select:focus
         width: 285px;
         padding: 40px 0 50px 0;
     }
-
-    .choosable-img
-    {
-        overflow-x: auto;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-
-    .choosable-img::-webkit-scrollbar
-    {
-        display: none;
-    }      
 
     .modal-container h3
     {
@@ -1149,5 +1181,11 @@ select:focus
     {
         width: auto;
         font-size: 30px;
+    }
+
+    .img, .img2, .img3
+    {
+        width: 285px;
+        height: 160.31px;
     }
 }
