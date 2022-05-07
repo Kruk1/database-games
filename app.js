@@ -23,8 +23,7 @@ const modal = (api, j) =>
     platforms.textContent = ''
     const age = modalClone.querySelector('.m-content')
     age.textContent = ''
-    const minimal = modalClone.querySelector('.minimal')
-    const recommend = modalClone.querySelector('.recommend')
+    const rating = modalClone.querySelector('.r-content')
 
     if(api.data.results[j].short_screenshots)
     {
@@ -83,6 +82,11 @@ const modal = (api, j) =>
     {
         age.textContent += `${api.data.results[j].esrb_rating.name}`
         title.textContent = api.data.results[j].name
+    }
+
+    if(api.data.results[j].metacritic)
+    {
+        rating.textContent = api.data.results[j].metacritic
     }
     gameContainer.append(modalClone)
 }

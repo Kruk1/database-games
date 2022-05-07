@@ -634,20 +634,20 @@ select:focus
 
 .tags
 {
-    width: 250px;
+    width: 200px;
     text-align: center;
     line-height: 25px;
     letter-spacing: 1px;
 }
 
-.tags h3, .genre h3, .platforms h3, .minimal-age h3
+.tags h3, .genre h3, .platforms h3, .minimal-age h3, .metacritic h3
 {
     margin-bottom: 30px;
 }
 
 .genre 
 {
-    width: 250px;
+    width: 200px;
     text-align: center;
     line-height: 25px;
     letter-spacing: 1px;
@@ -655,7 +655,7 @@ select:focus
 
 .platforms 
 {
-    width: 250px;
+    width: 200px;
     text-align: center;
     line-height: 25px;
     letter-spacing: 1px;
@@ -663,10 +663,23 @@ select:focus
 
 .minimal-age
 {
-    width: 250px;
+    width: 200px;
     text-align: center;
     line-height: 25px;
     letter-spacing: 1px;
+}
+
+.metacritic
+{
+    width: 200px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.r-content
+{
+    color: yellow;
+    font-size: 50px;
 }
 
 .requirements
