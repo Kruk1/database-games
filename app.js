@@ -1,4 +1,4 @@
-import { makeTile, scrollLoading } from '/js/gameTile.js'
+import { makeTile, scrollLoading } from './js/gameTile.js'
 import { selectOptions, search } from './js/search.js'
 
 const gameApp = 
