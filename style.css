@@ -669,17 +669,33 @@ select:focus
     letter-spacing: 1px;
 }
 
+.m-content
+{
+    font-weight: 400;
+    font-size: 20px;
+    color: rgb(230, 42, 42);
+}
+
 .metacritic
 {
     width: 200px;
     text-align: center;
     font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .r-content
 {
-    color: yellow;
     font-size: 50px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .requirements
@@ -687,22 +703,6 @@ select:focus
     width: 1000px;
     display: flex;
     margin-top: 20px;
-}
-
-.minimal
-{
-    width: 460px;
-    padding: 20px;
-    text-align: center;
-    letter-spacing: 1px;
-}
-
-.recommend
-{
-    width: 460px;
-    padding: 20px;
-    text-align: center;
-    letter-spacing: 1px;
 }
 
 .bold
@@ -803,16 +803,6 @@ select:focus
         align-items: center;
     }
 
-    .minimal
-    {
-        width: 400px;
-    }
-    
-    .recommend
-    {
-        width: 400px;
-    }
-
     .requirements
     {
         justify-content: center;
@@ -876,16 +866,6 @@ select:focus
         width: 792px;
         margin-bottom: 50px;
     }
-    
-    .minimal
-    {
-        width: 300px;
-    }
-    
-    .recommend
-    {
-        width: 300px;
-    }
 
     .main-gallery
     {
@@ -943,16 +923,6 @@ select:focus
         flex-wrap: wrap;
         width: 592px;
         margin-bottom: 50px;
-    }
-
-    .minimal
-    {
-        width: 200px;
-    }
-    
-    .recommend
-    {
-        width: 200px;
     }
 
     .main-gallery
@@ -1021,16 +991,6 @@ select:focus
         width: 392px;
         flex-direction: column;
         align-items: center;
-    }
-    
-    .minimal
-    {
-        width: 300px;
-    }
-    
-    .recommend
-    {
-        width: 300px;
     }
 
     .informations
@@ -1175,7 +1135,7 @@ select:focus
 
     .modal-container h3
     {
-        width: 220px;
+        width: 200px;
         font-size: 25px;
     }
 
