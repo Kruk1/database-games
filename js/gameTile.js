@@ -32,7 +32,14 @@ export const makeTile = (resLink) =>
                 platformImg2.setAttribute("alt", "playstation");
                 const platformImg3 = document.createElement('img')
                 platformImg3.setAttribute("alt", "xbox");
-                newTile.classList.add('game-tile')
+                if(localStorage.getItem('color') === 'white')
+                {
+                    newTile.classList.add('game-tile-light')
+                }
+                else
+                {
+                    newTile.classList.add('game-tile-dark')
+                }
                 img.classList.add('img-tile')
                 img.src = apiData.data.results[i].background_image
                 newTile.append(img)
@@ -119,7 +126,11 @@ export const makeTile = (resLink) =>
                 newTile.append(makeDiv2)
                 gameContainer.append(newTile)
                 modal(apiData, i)
-                const modalOpenBtn = document.querySelectorAll('.game-tile')
+                let modalOpenBtn = document.querySelectorAll('.game-tile-dark')
+                if(localStorage.getItem('color') === 'white')
+                {
+                    modalOpenBtn = document.querySelectorAll('.game-tile-light')
+                }
                 modalOpenBtn.forEach(btn => 
                 {
                     const cancel = btn.nextElementSibling.nextElementSibling.querySelector('.cancel')
@@ -296,6 +307,7 @@ const modal = (api, j) =>
     const modalItem = document.querySelector('.modal')
     const modalClone = modalItem.content.cloneNode(true)
     const gameContainer = document.querySelector('.games-container')
+    const modalContainer = modalClone.querySelector('.modal-container-dark')
     const title = modalClone.querySelector('.title')
     const choosableImg = modalClone.querySelector('.choosable-img')
     const mainImg = modalClone.querySelector('.main-gallery')
@@ -307,7 +319,19 @@ const modal = (api, j) =>
     platforms.textContent = ''
     const age = modalClone.querySelector('.m-content')
     age.textContent = ''
-    const rating = modalClone.querySelector('.r-content')
+    const rating = modalClone.querySelector('.r-content-dark')
+    const cancel = modalClone.querySelector('.cancel')
+
+    if(localStorage.getItem('color') === 'white')
+    {
+        modalContainer.classList.remove('modal-container-dark')
+        modalContainer.classList.add('modal-container-light')
+        rating.classList.remove('r-content-dark')
+        rating.classList.add('r-content-light')
+        cancel.classList.remove('cancel-dark')
+        cancel.classList.add('cancel-light')
+
+    }
 
     if(api.data.results[j].short_screenshots)
     {
@@ -424,6 +448,26 @@ const skeletonTile = () =>
         makePlatformSkeleton2.append(makeTextSkeleton2, makeStoresSkeleton2)
 
         makeSkeletonTile.classList.add('game-tile-skeleton')
+        if(localStorage.getItem('color') === 'white')
+        {
+            makeSkeletonTile.style.background = '#dbdbdb'
+            makeImgSkeleton.style.animation = 'skeleton-white 1s linear infinite alternate'
+            makeTitleSkeleton.style.animation = 'skeleton-white 1s linear infinite alternate'
+
+            makePlatformSkeleton.style.animation = 'skeleton-white 1s linear infinite alternate'
+            makeTextSkeleton.style.animation = 'skeleton-white 1s linear infinite alternate'
+            makeStoreSkeleton.style.animation = 'skeleton-white 1s linear infinite alternate'
+            makeStoreSkeleton2.style.animation = 'skeleton-white 1s linear infinite alternate'
+            makeStoreSkeleton3.style.animation = 'skeleton-white 1s linear infinite alternate'
+            makeStoreSkeleton4.style.animation = 'skeleton-white 1s linear infinite alternate'
+
+            makePlatformSkeleton2.style.animation = 'skeleton-white 1s linear infinite alternate'
+            makeTextSkeleton2.style.animation = 'skeleton-white 1s linear infinite alternate'
+            makeStoreSkeleton1.style.animation = 'skeleton-white 1s linear infinite alternate'
+            makeStoreSkeleton22.style.animation = 'skeleton-white 1s linear infinite alternate'
+            makeStoreSkeleton33.style.animation = 'skeleton-white 1s linear infinite alternate'
+            makeStoreSkeleton44.style.animation = 'skeleton-white 1s linear infinite alternate'
+        }
         makeSkeletonTile.append(makeImgSkeleton, makeTitleSkeleton, makePlatformSkeleton, makePlatformSkeleton2)
         gameContainer.append(makeSkeletonTile)
     }
@@ -431,9 +475,6 @@ const skeletonTile = () =>
 
 export const scrollLoading = (currLink, resLink) =>
 {
-    const scrollValue = window.scrollY
-    const arrow = document.querySelector('.arrow-up')
-    
     setTimeout(() =>
     {
         if(currLink !== resLink)
@@ -441,13 +482,4 @@ export const scrollLoading = (currLink, resLink) =>
             makeTile(resLink)
         }
     }, 500)
-
-    if(scrollValue > 100)
-    {
-        arrow.classList.add('display')
-    }
-    else
-    {
-        arrow.classList.remove('display')
-    }
 }
