@@ -191,9 +191,18 @@ export const makeTile = (resLink) =>
                         {
                             const imgIndex = Array.from(imgGallery)
                             const gallery = btn.nextElementSibling.nextElementSibling.querySelector('.main-img')
-                            imgGallery[currImg].classList.remove('opacity')
+                            imgGallery[currImg].classList.remove('opacity-dark')
+                            if(localStorage.getItem('color') === 'white')
+                            {
+                                imgGallery[currImg].classList.remove('opacity-light')
+                            }
                             gallery.src = img.src
-                            img.classList.add('opacity')
+                            img.classList.add('opacity-dark')
+                            if(localStorage.getItem('color') === 'white')
+                            {
+                                img.classList.remove('opacity-dark')
+                                img.classList.add('opacity-light')
+                            }
                             currImg = imgIndex.indexOf(img)
                             e.stopPropagation()
                         })
@@ -203,14 +212,32 @@ export const makeTile = (resLink) =>
                     {
                         const img = btn.nextElementSibling.nextElementSibling.querySelector('.main-img3')
                         const mainImg = btn.nextElementSibling.nextElementSibling.querySelector('.main-img')
-                        imgGallery.forEach(img => img.classList.remove('opacity'))
+                        imgGallery.forEach(img => 
+                        {
+                            img.classList.remove('opacity-dark')
+                            if(localStorage.getItem('color') === 'white')
+                            {
+                                img.classList.remove('opacity-light')
+                            }
+                        })
                         currImg -= 1
                         previousArrow.setAttribute('disabled', '')
                         if(currImg < 0)
                         {
-                            imgGallery.forEach(img => img.classList.remove('opacity'))
+                            imgGallery.forEach(img => 
+                            {
+                                img.classList.remove('opacity-dark')
+                                if(localStorage.getItem('color') === 'white')
+                                {
+                                    img.classList.remove('opacity-light')
+                                }
+                            })
                             currImg = imgGallery.length - 1
-                            imgGallery[currImg].classList.add('opacity')
+                            imgGallery[currImg].classList.add('opacity-dark')
+                            if(localStorage.getItem('color') === 'white')
+                            {
+                                imgGallery[currImg].classList.add('opacity-light')
+                            }
                             img.src = imgGallery[currImg].src
                             img.style.transition = '1s'
                             img.style.transform = 'translateX(100%)'
@@ -227,7 +254,11 @@ export const makeTile = (resLink) =>
                             })
                             e.stopPropagation()
                         }
-                        imgGallery[currImg].classList.add('opacity')
+                        imgGallery[currImg].classList.add('opacity-dark')
+                        if(localStorage.getItem('color') === 'white')
+                        {
+                            imgGallery[currImg].classList.add('opacity-light')
+                        }
                         img.src = imgGallery[currImg].src
                         img.style.transition = '1s'
                         img.style.transform = 'translateX(100%)'
@@ -249,14 +280,32 @@ export const makeTile = (resLink) =>
                     {
                         const img = btn.nextElementSibling.nextElementSibling.querySelector('.main-img2')
                         const mainImg = btn.nextElementSibling.nextElementSibling.querySelector('.main-img')
-                        imgGallery.forEach(img => img.classList.remove('opacity'))
+                        imgGallery.forEach(img => 
+                        {
+                            img.classList.remove('opacity-dark')
+                            if(localStorage.getItem('color') === 'white')
+                            {
+                                img.classList.remove('opacity-light')
+                            }
+                        })
                         currImg += 1
                         nextArrow.setAttribute('disabled', '')
                         if(currImg >= imgGallery.length)
                         {
-                            imgGallery.forEach(img => img.classList.remove('opacity'))
+                            imgGallery.forEach(img => 
+                            {
+                                img.classList.remove('opacity-dark')
+                                if(localStorage.getItem('color') === 'white')
+                                {
+                                    img.classList.remove('opacity-light')
+                                }
+                            })
                             currImg = 0
-                            imgGallery[currImg].classList.add('opacity')
+                            imgGallery[currImg].classList.add('opacity-dark')
+                            if(localStorage.getItem('color') === 'white')
+                            {
+                                imgGallery[currImg].classList.add('opacity-light')
+                            }
                             img.src = imgGallery[currImg].src
                             img.style.transition = '1s'
                             img.style.transform = 'translateX(-100%)'
@@ -273,7 +322,11 @@ export const makeTile = (resLink) =>
                             })
                             e.stopPropagation()
                         }
-                        imgGallery[currImg].classList.add('opacity')
+                        imgGallery[currImg].classList.add('opacity-dark')
+                        if(localStorage.getItem('color') === 'white')
+                        {
+                            imgGallery[currImg].classList.add('opacity-light')
+                        }
                         img.src = imgGallery[currImg].src
                         img.style.transition = '1s'
                         img.style.transform = 'translateX(-100%)'
@@ -330,7 +383,6 @@ const modal = (api, j) =>
         rating.classList.add('r-content-light')
         cancel.classList.remove('cancel-dark')
         cancel.classList.add('cancel-light')
-
     }
 
     if(api.data.results[j].short_screenshots)
@@ -343,7 +395,12 @@ const modal = (api, j) =>
             choosableImg.append(img)
         }
         mainImg.children[1].children[0].src = choosableImg.children[0].src
-        choosableImg.children[0].classList.add('opacity')
+        choosableImg.children[0].classList.add('opacity-dark')
+        if(localStorage.getItem('color') === 'white')
+        {
+            choosableImg.children[0].classList.remove('opacity-dark')
+            choosableImg.children[0].classList.add('opacity-light')
+        }
     }
 
     if(api.data.results[j].tags)

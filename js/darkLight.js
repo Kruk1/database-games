@@ -12,6 +12,7 @@ export const lightMode = () =>
     const cancel = document.querySelectorAll('.cancel-dark')
     const h2 = document.querySelector('.input h2')
     const icon = document.querySelector('.icon-moon')
+    const choosableImg = document.querySelectorAll('.choosable-img')
     document.body.style.background = '#ededed'
     document.body.style.color = 'black'
     tiles.forEach(tile => {
@@ -49,6 +50,11 @@ export const lightMode = () =>
     h2.style.color = 'black'
     icon.classList.remove('icon-moon')
     icon.classList.add('icon-sun')
+    choosableImg.forEach(opacity =>
+    {
+        opacity.children[0].classList.remove('opacity-dark')
+        opacity.children[0].classList.add('opacity-light')
+    })
     localStorage.setItem('color', 'white')
 }
 
@@ -66,6 +72,7 @@ export const darkMode = () =>
     const cancel = document.querySelectorAll('.cancel-light')
     const h2 = document.querySelector('.input h2')
     const icon = document.querySelector('.icon-sun')
+    const choosableImg = document.querySelectorAll('.choosable-img')
     document.body.style.background = ''
     document.body.style.color = ''
     tiles.forEach(tile => {
@@ -103,5 +110,10 @@ export const darkMode = () =>
     h2.style.color = ''
     icon.classList.add('icon-moon')
     icon.classList.remove('icon-sun')
+    choosableImg.forEach(opacity =>
+    {
+        opacity.children[0].classList.add('opacity-dark')
+        opacity.children[0].classList.remove('opacity-light')
+    })
     localStorage.setItem('color', 'dark')
 }
