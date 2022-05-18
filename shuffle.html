@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming search api</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fontello/css/fontello-embedded.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" defer src="appShuffle.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-items">
+                <div class="nav-item nav-item-dark"><a href="index.html">Games</a></div>
+                <div class="nav-item nav-item-dark"><a href="#">Shuffle</a></div>
+            </div>
+            <div class="lightmode-shuffle">
+                <input type="checkbox" name="dark/ligth-mode" id="dark-light-mode">
+                <i class="icon-moon"></i>
+            </div>
+        </nav>
+    </header>
+    <main id="top">
+        <article class="input">
+            <h1>Shuffle!</h1>
+            <h2>You can shuffle and find new game and play it!</h2>
+        </article>
+        <article class="shuffle">
+            <section class="shuffle-options">
+                <section class="tags-container">
+                    <h3>Tags:</h3>
+                    <div class="tag-option tag-option-border-radius">
+                        <div class="tag-text">Tag options</div>
+                        <div class="open-btn radius"><i class="icon-down-open"></i></div>
+                    </div>
+                    <div class="tags-list">
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-tag">
+                            </div>
+                            <div class="tag-value">Singleplayer<div class="value">31</div></div>
+                        </div>
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-tag">
+                            </div>
+                            <div class="tag-value">Multiplayer<div class="value">7</div></div>
+                        </div>
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-tag">
+                            </div>
+                            <div class="tag-value">Open World<div class="value">36</div></div>
+                        </div>
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-tag">
+                            </div>
+                            <div class="tag-value">Fantasy<div class="value">64</div></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="tags-container">
+                    <h3>Genres:</h3>
+                    <div class="tag-option tag-option-border-radius">
+                        <div class="tag-text">Genre options</div>
+                        <div class="open-btn radius"><i class="icon-down-open"></i></div>
+                    </div>
+                    <div class="tags-list">
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-genre">
+                            </div>
+                            <div class="tag-value">Action<div class="value">4</div></div>
+                        </div>
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-genre">
+                            </div>
+                            <div class="tag-value">RPG<div class="value">5</div></div>
+                        </div>
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-genre">
+                            </div>
+                            <div class="tag-value">Adventure<div class="value">3</div></div>
+                        </div>
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-genre">
+                            </div>
+                            <div class="tag-value">Shooter<div class="value">2</div></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="tags-container">
+                    <h3>Stores:</h3>
+                    <div class="tag-option tag-option-border-radius">
+                        <div class="tag-text">Store options</div>
+                        <div class="open-btn radius"><i class="icon-down-open"></i></div>
+                    </div>
+                    <div class="tags-list">
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-store">
+                            </div>
+                            <div class="tag-value">Steam<div class="value">1</div></div>
+                        </div>
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-store">
+                            </div>
+                            <div class="tag-value">PlayStation<div class="value">3</div></div>
+                        </div>
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-store">
+                            </div>
+                            <div class="tag-value">Xbox<div class="value">2</div></div>
+                        </div>
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-store">
+                            </div>
+                            <div class="tag-value">Epic Games<div class="value">11</div></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="tags-container">
+                    <h3>Platforms:</h3>
+                    <div class="tag-option tag-option-border-radius">
+                        <div class="tag-text">Platform options</div>
+                        <div class="open-btn radius"><i class="icon-down-open"></i></div>
+                    </div>
+                    <div class="tags-list">
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-platform">
+                            </div>
+                            <div class="tag-value">PC<div class="value">4</div></div>
+                        </div>
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-platform">
+                            </div>
+                            <div class="tag-value">PlayStation 5<div class="value">187</div></div>
+                        </div>
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-platform">
+                            </div>
+                            <div class="tag-value">Xbox One<div class="value">1</div></div>
+                        </div>
+                        <div class="tag">
+                            <div class="check">
+                                <input type="checkbox" name="" class="check-platform">
+                            </div>
+                            <div class="tag-value">Nintendo Switch<div class="value">7</div></div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section class="main-shuffle">
+                <div class="shuffle-img"></div>
+                <div class="shuffle-title"></div>
+                <button class="shuffle-btn">Shuffle!</button>
+            </section>
+        </article>
+        <a href="#" class="arrow-up-dark"></a>
+    </main>
+    <template class="shuffle-item">
+        <div class="shuffle-img">
+            <img src="https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg" alt="">
+        </div>
+        <div class="shuffle-title">
+            <h3>Portal 2</h3>
+        </div>
+        <button class="shuffle-btn">Shuffle!</button>
+    </template>
+</body>
+</html>
