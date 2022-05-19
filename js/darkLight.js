@@ -147,9 +147,9 @@ export const lightModeShuffle = () =>
     tagLists.forEach(list => 
     {
         list.style.background = '#dbdbdb'
-        list.children[0].style.borderTop = '1px solid #c8c8c8'
+        list.children[0].style.borderTop = '2px solid #c8c8c8'
     })
-    checkboxes.forEach(box => box.children[0].style.border = '1px solid #c8c8c8')
+    checkboxes.forEach(box => box.children[0].style.border = '2px solid #c8c8c8')
     shuffleBtn.style.background = '#dbdbdb'
     shuffleBtn.style.color = 'black'
     icon.classList.remove('icon-moon')
