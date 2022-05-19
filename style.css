@@ -356,6 +356,12 @@ main
     animation: skeleton 1s linear infinite alternate;
 }
 
+.skeleton-white
+{
+    z-index: 5;
+    animation: skeleton-white 1s linear infinite alternate;
+}
+
 #dark-light-mode
 {
     position: relative;
@@ -1132,7 +1138,6 @@ select:focus
     margin-top: 10px;
     width: 250px;
     height: 30px;
-    animation: skeleton 1s linear infinite alternate;
 }
 
 .shuffle-title h3 
@@ -1148,7 +1153,6 @@ select:focus
     width: 150px;
     height: 50px;
     border: 0;
-    animation: skeleton 1s linear infinite alternate;
 }
 
 .shuffle-btn

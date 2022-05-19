@@ -18,6 +18,15 @@ const shuffleSkeleton = () =>
     const main = document.querySelector('.main-shuffle')
     const shuffleSkeletonItem = document.querySelector('.shuffle-skeleton')
     const shuffleSkeletonClone = shuffleSkeletonItem.content.cloneNode(true)
+    if(localStorage.getItem('color') === 'white')
+    {
+        shuffleSkeletonClone.children[0].classList.remove('skeleton')
+        shuffleSkeletonClone.children[1].classList.remove('skeleton')
+        shuffleSkeletonClone.children[2].classList.remove('skeleton')
+        shuffleSkeletonClone.children[0].classList.add('skeleton-white')
+        shuffleSkeletonClone.children[1].classList.add('skeleton-white')
+        shuffleSkeletonClone.children[2].classList.add('skeleton-white')
+    }
     main.append(shuffleSkeletonClone)
 }
 
@@ -109,6 +118,11 @@ export const shuffling = async () =>
     img.src = api.data.results[item].background_image
     title.textContent = api.data.results[item].name
     const btn = shuffleClone.querySelector('.shuffle-btn')
+    if(localStorage.getItem('color') === 'white')
+    {
+        btn.style.background = '#dbdbdb'
+        btn.style.color = 'black'
+    }
     btn.addEventListener('click', e => 
     {
         shuffling()

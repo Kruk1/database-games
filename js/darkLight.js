@@ -117,3 +117,81 @@ export const darkMode = () =>
     })
     localStorage.setItem('color', 'dark')
 }
+
+export const lightModeShuffle = () =>
+{
+    const header = document.querySelector('header')
+    const links = document.querySelectorAll('.nav-item a')
+    const navItem = document.querySelectorAll('.nav-item')
+    const h2 = document.querySelector('.input h2')
+    const tags = document.querySelectorAll('.tag-option')
+    const openBtn = document.querySelectorAll('.open-btn')
+    const tagLists = document.querySelectorAll('.tags-list')
+    const tagged = document.querySelectorAll('.tag')
+    const checkboxes = document.querySelectorAll('.check')
+    const shuffleBtn = document.querySelector('.shuffle-btn')
+    const icon = document.querySelector('.icon-moon')
+    header.style.background = '#dbdbdb'
+    document.body.style.background = '#ededed'
+    document.body.style.color = 'black'
+    links.forEach(link => link.style.color = 'black')
+    navItem.forEach(item =>
+    {
+        item.classList.remove('nav-item-dark')
+        item.classList.add('nav-item-light')
+    })
+    h2.style.color = 'black'
+    tags.forEach(tag => tag.style.background = '#dbdbdb')
+    tagged.forEach(tagItem => tagItem.style.borderBottom = '1px solid #c8c8c8')
+    openBtn.forEach(open => open.style.background = '#c8c8c8')
+    tagLists.forEach(list => 
+    {
+        list.style.background = '#dbdbdb'
+        list.children[0].style.borderTop = '1px solid #c8c8c8'
+    })
+    checkboxes.forEach(box => box.children[0].style.border = '1px solid #c8c8c8')
+    shuffleBtn.style.background = '#dbdbdb'
+    shuffleBtn.style.color = 'black'
+    icon.classList.remove('icon-moon')
+    icon.classList.add('icon-sun')
+    localStorage.setItem('color', 'white')
+}
+
+export const darkModeShuffle = () =>
+{
+    const header = document.querySelector('header')
+    const links = document.querySelectorAll('.nav-item a')
+    const navItem = document.querySelectorAll('.nav-item')
+    const h2 = document.querySelector('.input h2')
+    const tags = document.querySelectorAll('.tag-option')
+    const openBtn = document.querySelectorAll('.open-btn')
+    const tagLists = document.querySelectorAll('.tags-list')
+    const tagged = document.querySelectorAll('.tag')
+    const checkboxes = document.querySelectorAll('.check')
+    const shuffleBtn = document.querySelector('.shuffle-btn')
+    const icon = document.querySelector('.icon-sun')
+    header.style.background = ''
+    document.body.style.background = ''
+    document.body.style.color = ''
+    links.forEach(link => link.style.color = '')
+    navItem.forEach(item =>
+    {
+        item.classList.add('nav-item-dark')
+        item.classList.remove('nav-item-light')
+    })
+    h2.style.color = ''
+    tags.forEach(tag => tag.style.background = '')
+    tagged.forEach(tagItem => tagItem.style.borderBottom = '')
+    openBtn.forEach(open => open.style.background = '')
+    tagLists.forEach(list => 
+    {
+        list.style.background = ''
+        list.children[0].style.borderTop = ''
+    })
+    checkboxes.forEach(box => box.children[0].style.border = '')
+    shuffleBtn.style.background = ''
+    shuffleBtn.style.color = ''
+    icon.classList.add('icon-moon')
+    icon.classList.remove('icon-sun')
+    localStorage.setItem('color', 'dark')
+}

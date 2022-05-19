@@ -1,4 +1,5 @@
 import { checkbox, menuDisplay, shuffling } from "./js/shuffle.js"
+import { darkModeShuffle, lightModeShuffle } from "./js/darkLight.js"
 
 const shuffleApp = 
 {
@@ -79,6 +80,32 @@ const shuffleApp =
         {
             item.addEventListener('click', () => checkbox(item))
         })
+    },
+    lightMode()
+    {
+        const checkbox = document.querySelector('#dark-light-mode')
+
+        if(localStorage.getItem('color') === 'white')
+        {
+            checkbox.checked = true;
+            lightModeShuffle()
+        }
+        else
+        {
+            checkbox.checked = false;
+        }
+
+        checkbox.addEventListener('change', () =>
+        {
+            if(checkbox.checked)
+            {
+                lightModeShuffle()
+            }
+            else
+            {
+                darkModeShuffle()
+            }
+        })
     }
 }
 
@@ -88,3 +115,4 @@ shuffleApp.storeDisplay()
 shuffleApp.platformDisplay()
 shuffleApp.shuffle()
 shuffleApp.checkboxes()
+shuffleApp.lightMode()
