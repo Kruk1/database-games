@@ -13,6 +13,14 @@ export const menuDisplay = item =>
     list.classList.toggle('display-drop')
 }
 
+const shuffleSkeleton = () =>
+{
+    const main = document.querySelector('.main-shuffle')
+    const shuffleSkeletonItem = document.querySelector('.shuffle-skeleton')
+    const shuffleSkeletonClone = shuffleSkeletonItem.content.cloneNode(true)
+    main.append(shuffleSkeletonClone)
+}
+
 export const shuffling = async () =>
 {
     const main = document.querySelector('.main-shuffle')
@@ -52,6 +60,7 @@ export const shuffling = async () =>
     {
         main.removeChild(main.lastChild)
     }
+    shuffleSkeleton()
     for(let i = 0; i < storecheck.length; i++)
     {
         if(storecheck[i].checked)
@@ -105,6 +114,10 @@ export const shuffling = async () =>
         shuffling()
         e.stopPropagation()
     })
+    while(main.firstChild)
+    {
+        main.removeChild(main.lastChild)
+    }
     main.append(shuffleClone)
 }
 
