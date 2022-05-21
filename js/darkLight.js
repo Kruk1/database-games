@@ -131,6 +131,7 @@ export const lightModeShuffle = () =>
     const checkboxes = document.querySelectorAll('.check')
     const shuffleBtn = document.querySelector('.shuffle-btn')
     const icon = document.querySelector('.icon-moon')
+    const mobileLightBox = document.querySelector('.lightmode-shuffle')
     header.style.background = '#dbdbdb'
     document.body.style.background = '#ededed'
     document.body.style.color = 'black'
@@ -147,13 +148,15 @@ export const lightModeShuffle = () =>
     tagLists.forEach(list => 
     {
         list.style.background = '#dbdbdb'
-        list.children[0].style.borderTop = '2px solid #c8c8c8'
+        list.children[0].style.borderTop = '1px solid #c8c8c8'
+        list.children[3].style.borderBottom = ''
     })
     checkboxes.forEach(box => box.children[0].style.border = '2px solid #c8c8c8')
     shuffleBtn.style.background = '#dbdbdb'
     shuffleBtn.style.color = 'black'
     icon.classList.remove('icon-moon')
     icon.classList.add('icon-sun')
+    mobileLightBox.style.background = '#c8c8c8'
     localStorage.setItem('color', 'white')
 }
 
@@ -170,6 +173,7 @@ export const darkModeShuffle = () =>
     const checkboxes = document.querySelectorAll('.check')
     const shuffleBtn = document.querySelector('.shuffle-btn')
     const icon = document.querySelector('.icon-sun')
+    const mobileLightBox = document.querySelector('.lightmode-shuffle')
     header.style.background = ''
     document.body.style.background = ''
     document.body.style.color = ''
@@ -193,5 +197,6 @@ export const darkModeShuffle = () =>
     shuffleBtn.style.color = ''
     icon.classList.add('icon-moon')
     icon.classList.remove('icon-sun')
+    mobileLightBox.style.background = ''
     localStorage.setItem('color', 'dark')
 }
